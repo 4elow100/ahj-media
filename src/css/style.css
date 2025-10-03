@@ -1,0 +1,482 @@
+/*  Global Styles  */
+
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+
+    color: #555555;
+    background-color: #eeeeee;
+}
+
+.hidden {
+    display: none;
+}
+
+.btn {
+    background-color: #fdfdfd;
+    border: 2px solid gray;
+
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #f8f8f8;
+}
+
+.btn:active {
+    background-color: #fdfdfd;
+}
+
+.window-btn {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    padding: 0;
+
+    background-color: darkgray;
+    border: none;
+    border-radius: 50%;
+
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.window-btn i {
+    font-size: 8px;
+    opacity: 0;
+    transition: opacity 0.3ms ease;
+}
+
+.window-btn:hover i {
+    opacity: 1;
+}
+
+.close-window:hover {
+    background-color: crimson;
+}
+
+.hide-window:hover {
+    background-color: darkorange;
+}
+
+.resize-window:hover {
+    background-color: green;
+}
+
+.main-body {
+    box-sizing: border-box;
+    max-width: 900px;
+    min-width: max-content;
+    height: 80vh;
+    margin: 10vh auto 0;
+    padding: 0;
+
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25),
+    0 0 1px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.main-header {
+    height: 40px;
+    background-color: lightgray;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    height: 100%;
+    padding-left: 20px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: calc(100% - 40px);
+    padding: 1px 18px 20px 20px;
+
+    background-color: #fdfdfd;
+    background-image: linear-gradient(90deg, lightgray 1px, transparent 1px),
+    linear-gradient(lightgray 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+
+/* Timeline Styles */
+
+
+.timeline-container {
+    position: relative;
+    box-sizing: border-box;
+    flex: 1 1 0;
+    display: flex;
+    padding: 0 10px;
+    margin: 0;
+
+    overflow: hidden;
+}
+
+.timeline-container::before,
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 20px;
+
+    pointer-events: none;
+    z-index: 10;
+}
+
+.timeline-container::before {
+    top: 0;
+    background: linear-gradient(to bottom, #fdfdfd, rgba(253,253,253,0));
+}
+
+.timeline-container::after {
+    bottom: 0;
+    background: linear-gradient(to top, #fdfdfd, rgba(253,253,253,0));
+    border-radius: 20px 20px 0 0 ;
+}
+
+.line {
+    box-sizing: border-box;
+    width: 20px;
+    margin: 35px 25px 0 25px;
+
+    border: none;
+    background-color: #fdfdfd;
+}
+
+.timeline-list:empty + .line {
+    display: none;
+}
+
+.timeline-scroll {
+    flex: 1 1 0;
+    display: flex;
+    align-items: start;
+    padding: 20px 0;
+
+    overflow-y: auto;
+}
+
+.timeline-list-container {
+    flex: 1 1 0;
+    display: flex;
+}
+
+.timeline-list {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.timeline {
+    flex: 1 1 auto;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    max-width: 790px;
+    padding: 15px;
+    gap: 10px;
+
+    border: 2px solid gray;
+    border-radius: 20px;
+    background-color: #fdfdfd;
+}
+
+.timeline-circle {
+    box-sizing: border-box;
+    position: absolute;
+    top: 20px;
+    left: -52px;
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+    border: 2px solid gray;
+    background-color: #fdfdfd;
+    z-index: 777;
+}
+
+.timeline-content {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.timeline-geo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.9em;
+    line-height: 1;
+}
+
+.timeline-text {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.timeline-geo-hide i {
+    height: 0.9em;
+}
+
+.timeline-time {
+    white-space: nowrap;
+}
+
+.fa-eye {
+    display: none;
+}
+
+.fa-eye, .fa-eye-slash {
+    color: #cccccc;
+}
+
+:is(.fa-eye, .fa-eye-slash):hover {
+    color: gray;
+}
+
+.hide .fa-eye {
+    display: inline-block;
+}
+
+.hide .fa-eye-slash {
+    display: none;
+}
+
+.hide .timeline-geo-text {
+
+}
+
+.timeline .fa-solid {
+    cursor: pointer;
+}
+
+
+/* Input Field Styles */
+
+
+.input-container {
+    box-sizing: border-box;
+    display: flex;
+    align-items: end;
+    min-height: 40px;
+
+    border: 2px solid gray;
+    border-radius: 10px;
+    background-color: #fdfdfd;
+}
+
+.input-field {
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 150px;
+    padding: 10px 15px;
+
+    font-size: 14px;
+    line-height: 1.2em;
+    white-space: pre-wrap;
+    word-break: break-word;
+
+    overflow-y: scroll;
+    outline: none;
+}
+
+.input-field:empty:before {
+    content: attr(placeholder);
+    color: gray;
+    pointer-events: none;
+}
+
+.input-actions {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 38px;
+    padding: 0 10px;
+}
+
+.input-btn {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 28px;
+    width: 28px;
+
+    border: 2px solid gray;
+    border-radius: 50%;
+    background-color: #fdfdfd;
+
+    cursor: pointer;
+}
+
+.recording .audio-record,
+.recording .video-record {
+    display: none;
+}
+
+.recording .recording-actions {
+    display: flex;
+}
+
+.recording-actions {
+    display: none;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* Geolocation Input Popup Styles */
+
+
+.geo-err-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1010;
+}
+
+.geo-err-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    width: 500px;
+    margin: calc(100vh / 2 - 100px) auto auto;
+    padding: 20px;
+
+    border: 2px solid #555555;
+    border-radius: 20px;
+    background-color: #fdfdfd;
+}
+
+.geo-err-header, .geo-err-message {
+    margin-bottom: 1em;
+}
+
+.geo-err-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 0.8em;
+}
+
+.geo-err-textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px 10px;
+
+    border: 2px solid gray;
+    border-radius: 10px;
+    outline: none;
+}
+
+.bad-status {
+    border-color: red;
+}
+
+.btn {
+    background-color: #fdfdfd;
+    border: 2px solid gray;
+
+    cursor: pointer;
+}
+
+.geo-err-actions {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.geo-err-actions button {
+    padding: 10px;
+
+    border-radius: 10px;
+}
+
+
+/*  Tooltip Styles  */
+
+
+.tooltip.top {
+    padding: 5px 0 0;
+    margin-bottom: 3px;
+}
+
+.tooltip {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: block;
+
+    font-size: 12px;
+    line-height: 1.2em;
+    text-align: start;
+
+    opacity: 0;
+    transition: opacity 0.3ms ease;
+    z-index: 1070;
+}
+
+.tooltip .tooltip-arrow {
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+
+    border-width: 5px;
+    border-top-color: #000;
+}
+
+.tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    border-color: transparent;
+    border-style: solid;
+}
+
+.tooltip-inner {
+    max-width: 430px;
+    padding: 3px 8px;
+
+    color: #fff;
+    text-align: center;
+    background-color: #000;
+    border-radius: 4px;
+}
+
+.tooltip.in {
+    opacity: 1;
+}
+
+
